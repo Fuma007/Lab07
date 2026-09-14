@@ -1,5 +1,7 @@
 package se331.lab07.controller;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se331.lab07.entity.Event;
 
@@ -10,6 +12,11 @@ import java.util.List;
 @RestController
 public class EventController {
     List<Event> eventList;
+
+    @GetMapping("/events")
+    public ResponseEntity<?> getEventLists() {
+        return ResponseEntity.ok(eventList);
+    }
 
     @PostConstruct
     public void init() {
